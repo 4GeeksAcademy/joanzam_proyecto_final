@@ -21,7 +21,7 @@ export const Cart = () => {
             }
 
             try {
-                const baseUrl = process.env.REACT_APP_BACKEND_URL || "https://fallback-url.com";
+                const baseUrl = process.env.REACT_APP_BACKEND_URL;
                 const url = `${baseUrl}/api/cart?user_id=${userId}`;
 
                 const response = await fetch(url, {
