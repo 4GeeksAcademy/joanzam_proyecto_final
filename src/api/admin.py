@@ -1,6 +1,6 @@
 import os
 from flask_admin import Admin
-from .models import db, User, Product, Order, OrderItem, Notification, Category, Cart
+from .models import db, User, Product, Category, Cart
 from flask_admin.contrib.sqla import ModelView
 
 # Clase personalizada para Product para incluir el campo "categories"
@@ -26,9 +26,6 @@ def setup_admin(app):
     # Añadir modelos a la interfaz administrativa
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ProductAdmin(Product, db.session))  # Usa la clase personalizada ProductAdmin
-    admin.add_view(ModelView(Order, db.session))
-    admin.add_view(ModelView(OrderItem, db.session))
-    admin.add_view(ModelView(Notification, db.session))
     admin.add_view(ModelView(Category, db.session))
     admin.add_view(ModelView(Cart, db.session))
 

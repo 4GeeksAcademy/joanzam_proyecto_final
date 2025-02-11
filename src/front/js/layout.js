@@ -15,14 +15,12 @@ import { ProductAdmin } from "./pages/productAdmin";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import ProtectedRoute from "./component/ProtectedRoute"; // Importamos el componente de protección
-import { Store } from "./pages/store"; // Importar la vista de Tienda
-import { Cart } from "./pages/cart"; // Importar la vista de Carrito
-import { OrderHistory } from "./pages/orderHistory"; // Importar la vista de Historial de Pedidos
-import { Notifications } from "./pages/notifications"; // Importar la vista de Notificaciones
+import { Store } from "./pages/store"; 
+import { Cart } from "./pages/cart"; 
 import SuccessPage from './pages/SuccessPage';
 import CancelPage from './pages/CancelPage';
 import NotFound from "./pages/notFound";
-import CreateProduct from "./pages/CreateProduct"; // Importa el componente
+import CreateProduct from "./pages/CreateProduct"; 
 
 //create your first component
 const Layout = () => {
@@ -44,8 +42,6 @@ const Layout = () => {
                         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
                         <Route path="/store" element={<Store />} /> 
                         <Route path="/cart" element={<Cart />} /> 
-                        <Route path="/order-history" element={<ProtectedRoute><OrderHistory /></ProtectedRoute>} /> 
-                        <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} /> 
                         <Route path="/admin/products" element={<ProductAdmin />} />
                         <Route path="/admin/create-product" element={<ProtectedRoute><CreateProduct /></ProtectedRoute>} />
                         <Route path="/success" element={<SuccessPage />} />

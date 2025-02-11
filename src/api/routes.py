@@ -47,10 +47,13 @@ def create_payment():
             payment_method_types=['card'],
             line_items=line_items,
             mode='payment',
-            success_url=os.getenv('REACT_APP_SUCCESS_URL', 'https://default-success-url.com'),
-            cancel_url=os.getenv('REACT_APP_CANCEL_URL', 'https://default-cancel-url.com'),
+            success_url=os.getenv('REACT_APP_SUCCESS_URL'),
+            cancel_url=os.getenv('REACT_APP_CANCEL_URL'),
         )
         return jsonify({'id': session.id}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
+@api.route('/hello', methods=['GET'])
+def handle_hello():
+    return jsonify({"message": "Hello! I'm a message from the backend"}), 200

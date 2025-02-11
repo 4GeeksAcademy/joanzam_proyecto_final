@@ -1,0 +1,9 @@
+"migrations/versions/0b8a39884dda_eliminaci\303\263n_de_clases_order_orderitem_y_.py"
+src/api/admin.py
+src/api/models.py
+src/api/routes.py
+src/front/js/component/config.js
+src/front/js/layout.js
+src/front/js/pages/cart.js
+src/front/js/pages/orderHistory.js
+src/front/js/utils/api.js

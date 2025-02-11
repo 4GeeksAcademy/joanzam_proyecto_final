@@ -21,7 +21,7 @@ export const Cart = () => {
             }
 
             try {
-                const baseUrl = process.env.REACT_APP_BACKEND_URL || "https://fallback-url.com";
+                const baseUrl = process.env.REACT_APP_BACKEND_URL;
                 const url = `${baseUrl}/api/cart?user_id=${userId}`;
 
                 const response = await fetch(url, {
@@ -116,28 +116,22 @@ export const Cart = () => {
     return (
         <div className="cart-container">
             <h1>Tu Carrito</h1>
-            {cartItems.length > 0 ? (
-                <ul>
-                    {cartItems.map((item) => (
-                        <li key={item.id}>
-                            {item.product ? (
-                                <>
-                                    <p>{item.product.name}</p>
-                                    <p>Cantidad: {item.quantity}</p>
-                                    <p>Precio: ${(item.product.price * item.quantity).toFixed(2)}</p>
-                                    <button onClick={() => handleRemoveProduct(item.product.id)}>
-                                        Eliminar
-                                    </button>
-                                </>
-                            ) : (
-                                <p>Producto no encontrado.</p>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No hay productos en el carrito.</p>
-            )}
+            <ul>
+                {cartItems.map((item) => (
+                    <li key={item.id}>
+                        {item.product && (
+                            <>
+                                <p>{item.product.name}</p>
+                                <p>Cantidad: {item.quantity}</p>
+                                <p>Precio: ${(item.product.price * item.quantity).toFixed(2)}</p>
+                                <button onClick={() => handleRemoveProduct(item.product.id)}>
+                                    Eliminar
+                                </button>
+                            </>
+                        )}
+                    </li>
+                ))}
+            </ul>
             <button onClick={handlePayment}>Pagar con Stripe</button>
         </div>
     );
