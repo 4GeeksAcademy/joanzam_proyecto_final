@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard"; // Asegúrate de importar ProductCard
-import { fetchProducts } from "../api/productService"; // Función para obtener productos de la API
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Función para obtener productos
         const getProducts = async () => {
             try {
-                const response = await fetchProducts();  // Asegúrate de que esta función obtenga los productos desde tu API
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/products`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                    }
+                });
                 if (response.ok) {
                     const data = await response.json();
-                    setProducts(data.products);  // Asumimos que el backend retorna una propiedad 'products'
+                    setProducts(data.products);
                 } else {
                     console.error("Error al obtener productos");
                 }
