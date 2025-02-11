@@ -10,7 +10,6 @@ import Profile from "./pages/profile";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import { ProductAdmin } from "./pages/productAdmin";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -20,7 +19,7 @@ import { Cart } from "./pages/cart";
 import SuccessPage from './pages/SuccessPage';
 import CancelPage from './pages/CancelPage';
 import NotFound from "./pages/notFound";
-import CreateProduct from "./pages/CreateProduct"; 
+import CreateProductForm from "./component/CreateProductForm";
 
 //create your first component
 const Layout = () => {
@@ -42,8 +41,7 @@ const Layout = () => {
                         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
                         <Route path="/store" element={<Store />} /> 
                         <Route path="/cart" element={<Cart />} /> 
-                        <Route path="/admin/products" element={<ProductAdmin />} />
-                        <Route path="/admin/create-product" element={<ProtectedRoute><CreateProduct /></ProtectedRoute>} />
+                        <Route path="/admin/create-product" element={<ProtectedRoute><CreateProductForm /></ProtectedRoute>} />
                         <Route path="/success" element={<SuccessPage />} />
                         <Route path="/cancel" element={<CancelPage />} />
                         <Route element={<NotFound />} path="*"  />

@@ -12,6 +12,8 @@ from api.admin import setup_admin
 from api.commands import setup_commands
 from api import register_routes  # Importa la función que registra todas las rutas
 from flask_jwt_extended import JWTManager
+from flask import redirect
+
 
 # Configuración del entorno
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
@@ -66,12 +68,9 @@ app.config['SQLALCHEMY_ECHO'] = True
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
-# Generar sitemap con todos los endpoints
 @app.route('/')
-def sitemap():
-    if ENV == "development":
-        return generate_sitemap(app)
-    return send_from_directory(static_file_dir, 'index.html')
+def redirect_to_admin():
+    return redirect('/admin', code=302)
 
 # Manejo de archivos estáticos (para imágenes y otros recursos)
 @app.route('/static/uploads/<filename>', methods=['GET'])
